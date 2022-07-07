@@ -13,7 +13,7 @@ jobs:
     - name: Make dummy file
       run: touch ${{ env.FILENAME }}
     - name: Upload artifact
-      uses: actions/upload_artifact@v3.1.0
+      uses: actions/upload-artifact@v3.1.0
       with:
         ${{ env.FILENAME }}
     env:
