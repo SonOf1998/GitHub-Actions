@@ -9,15 +9,26 @@ jobs:
     name: First job
     steps: 
     - name: Step one
-      uses: actions/checkout@v2
-    - name: Step two
-      run: env | sort
+      run: echo "$(date)"
   
   job2:
     runs-on: windows-latest
     name: Second job
     steps: 
     - name: Step one
-      uses: actions/checkout@v2
-    - name: Step two
-      run: "Get-ChildItem Env: | Sort-Object Name"
+      run: Get-Date
+
+  job3:
+    runs-on: macos-latest
+    name: Third job
+    steps: 
+    - name: Step one
+      run: echo "$(date)"
+
+  job4:
+    runs-on: ubuntu-latest
+    name: Fourth job
+    needs: [job1, job2, job3]
+    steps: 
+    - name: Step one
+      run: echo "$(date)"
