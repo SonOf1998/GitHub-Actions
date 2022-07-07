@@ -10,6 +10,12 @@ jobs:
     steps: 
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Python Syntax Detection
-      uses: cclauss/Find-Python-syntax-errors-action@master
+    - name: Make dummy file
+      run: touch ${{ env.FILENAME }}
+    - name: Upload artifact
+      uses: actions/upload_artifact@v3.1.0
+      with:
+        ${{ env.FILENAME }}
+    env:
+      FILENAME: XD.XD
   
