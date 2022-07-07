@@ -8,27 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     name: First job
     steps: 
-    - name: Step one
-      run: echo "$(date)"
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Python Syntax Detection
+      uses: cclauss/Find-Python-syntax-errors-action@master
   
-  job2:
-    runs-on: windows-latest
-    name: Second job
-    steps: 
-    - name: Step one
-      run: Get-Date
-
-  job3:
-    runs-on: macos-latest
-    name: Third job
-    steps: 
-    - name: Step one
-      run: echo "$(date)"
-
-  job4:
-    runs-on: ubuntu-latest
-    name: Fourth job
-    needs: [job1, job2, job3]
-    steps: 
-    - name: Step one
-      run: echo "$(date)"
