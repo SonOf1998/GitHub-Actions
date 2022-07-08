@@ -4,19 +4,23 @@ on: [push]
 
 jobs:
 
-  job1:
+  Test:
     runs-on: ubuntu-latest
-    name: First job
     steps: 
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Make dummy file
-      run: touch ${{ env.FILENAME }}
-    - name: Upload artifact
+    - name: Run Python script
+      run: python main.py
+  
+  Build:
+    needs: [Test]
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Run Python script
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: ${{ env.FILENAME }}
+        name: pyartifact
         path: .
-    env:
-      FILENAME: XD.XD
   
